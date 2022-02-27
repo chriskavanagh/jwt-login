@@ -1,14 +1,6 @@
 import "./App.css";
 import { useReducer, useState } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <Counter />
-    </div>
-  );
-}
-
 function reducer(state, action) {
   switch (action.type) {
     case "increment":
@@ -37,13 +29,13 @@ function reducer(state, action) {
 }
 
 // useReducer
-function Counter() {
+function Counter({ updateStep, min, max }) {
   const [state, dispatch] = useReducer(reducer, { count: 0, step: 1 });
   return (
     <>
       <Slider
-        min={1}
-        max={10}
+        min={min}
+        max={max}
         onChange={(value) =>
           dispatch({
             type: "updateStep",
@@ -81,4 +73,4 @@ const Slider = ({ onChange, min, max }) => {
   );
 };
 
-export default App;
+export default Slider;
